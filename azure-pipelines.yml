@@ -21,3 +21,19 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
+  displayName: 'Install npm packages'
+
+# Build application.
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
+  displayName: 'Build app'
+
+# Publish application artifact.
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'app'
+    publishLocation: 'pipeline'
+  displayName: 'Publish artifact'
