@@ -16,3 +16,8 @@ steps:
     command: 'custom'
     customCommand: 'install -g @angular/cli'
   displayName: 'Install Angular CLI'
+
+#Install required NPM Packages
+- task: Npm@1
+  inputs:
+    command: 'install'
